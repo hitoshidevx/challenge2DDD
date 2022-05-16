@@ -60,4 +60,13 @@ public class Experiencia {
 		this.dataFim = dataFim;
 	}
 	
+	public String ExibirEmpregoEmpresa() {
+		return "Emprego: " + emprego + " - " + "\nEmpresa: " + empresa;
+	}
+	
+	public void AlterarExperiencia(String novoEmprego, String novaEmpresa) {
+		this.emprego = novoEmprego;
+		this.empresa = novaEmpresa;
+	}
+	
 }

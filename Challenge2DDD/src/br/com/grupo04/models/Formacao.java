@@ -4,6 +4,7 @@ public class Formacao {
 	
 	private String id;
 	private String ensinoMedio;
+	private int anoInicioMedio;
 	private int anoConclusaoMedio;
 	private String ensinoSuperior;
 	private int anoInicioSuperior;
@@ -26,6 +27,14 @@ public class Formacao {
 
 	public void setEnsinoMedio(String ensinoMedio) {
 		this.ensinoMedio = ensinoMedio;
+	}
+	
+	public int getAnoInicioMedio() {
+		return anoInicioMedio;
+	}
+
+	public void setAnoInicioMedio(int anoInicioMedio) {
+		this.anoInicioMedio = anoInicioMedio;
 	}
 
 	public int getAnoConclusaoMedio() {
@@ -98,4 +107,33 @@ public class Formacao {
 		this.anoFimEspecializacao = anoFimEspecializacao;
 	}
 	
+	public String ExibirFormacao() {
+		return "\nEnsino médio: " + ensinoMedio +
+			   "Ano de Início: " + anoInicioMedio +
+			   "Ano do Fim: " + anoConclusaoMedio +
+			   "\nEnsino Superior: " + ensinoSuperior +
+			   "Ano de Início: " + anoInicioSuperior +
+			   "Ano do Fim: " + anoFimSuperior +
+			   "\nEspecialização: " + especializacao +
+			   "Ano de Início: " + anoInicioEspecializacao +
+			   "Ano do Fim: " + anoFimEspecializacao;
+	}
+	
+	public void AlterarEnsinoMedio(String novoEnsinoMedio, int novoAnoInicioEM, int novoAnoConclusaoEM) {
+		this.ensinoMedio = novoEnsinoMedio;
+		this.anoInicioMedio = novoAnoInicioEM;
+		this.anoConclusaoMedio = novoAnoConclusaoEM;
+	}
+	
+	public void AlterarEnsinoSuperior(String novoEnsinoSuperior, int novoAnoInicioSuperior, int novoAnoFimSuperior) {
+		this.ensinoSuperior = novoEnsinoSuperior;
+		this.anoInicioSuperior = novoAnoInicioSuperior;
+		this.anoFimSuperior = novoAnoFimSuperior;
+	}
+	
+	public void AlterarEspecializacao(String novaEspecializacao, int novoAnoInicioEspec, int novoAnoFimEspec) {
+		this.especializacao = novaEspecializacao;
+		this.anoInicioEspecializacao = novoAnoInicioEspec;
+		this.anoFimEspecializacao = novoAnoFimEspec;
+	}
 }

@@ -21,4 +21,14 @@ public class Candidato extends Usuario {
 		this.curriculo = curriculo;
 	}
 	
+	public void AlterarTipoUsuario(Candidato cd) {
+		cd.setTipoUsuario(EnumTipoUsuario.EMPRESA);
+		cd.curriculo.setSkills(null);
+		System.out.println("\nSeu tipo de usuário foi alterado.\nSuas skills foram anuladas.\n");
+	}
+	
+	public String ExibirNomeEmailETelefone() {
+		return "Nome: " + nome + " - " + "Email: " + email + " - " + "Telefone: " + telefone;
+	}
+	
 }

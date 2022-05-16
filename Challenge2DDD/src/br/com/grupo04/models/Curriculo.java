@@ -47,5 +47,4 @@ public class Curriculo {
 		this.skills = skills;
 		this.experiencia = experiencia;
 	}
-	
 }

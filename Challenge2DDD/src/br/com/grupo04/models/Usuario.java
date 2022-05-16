@@ -61,4 +61,16 @@ public class Usuario {
 		this.dataNasc = dataNasc;
 		this.tipoUsuario = tipoUsuario;
 	}
+	
+	public void SelecionarTipoUsuario(int resposta) {
+		do {
+			if(resposta == 1) {
+				tipoUsuario = EnumTipoUsuario.CANDIDATO;
+			} else if (resposta == 2) {
+				tipoUsuario = EnumTipoUsuario.EMPRESA;
+			} else {
+				System.out.println("\nAlternativa inválida.\n");
+			}
+		} while (resposta != 1 | resposta != 2);
+	}
 }

@@ -51,4 +51,12 @@ public class VideoUpload {
 		this.upload = upload;
 	}
 	
+	public String ExibirVideo() {
+		return "Nome do Vídeo: " + nome;
+	}
+	
+	public void AlterarNomeDoVideo(String novoNome) {
+		this.nome = novoNome;
+	}
+	
 }
