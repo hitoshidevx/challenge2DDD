@@ -2,7 +2,7 @@ package br.com.grupo04.models;
 
 public class Formacao {
 	
-	private String id;
+	private int id;
 	private String ensinoMedio;
 	private int anoInicioMedio;
 	private int anoConclusaoMedio;
@@ -13,11 +13,11 @@ public class Formacao {
 	private int anoInicioEspecializacao;
 	private int anoFimEspecializacao;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -95,7 +95,7 @@ public class Formacao {
 
 	public Formacao() {}
 	
-	public Formacao(String id, String ensinoMedio, int anoConclusaoMedio, String ensinoSuperior, int anoInicioSuperior, int anoFimSuperior, String especializacao, int anoInicioEspecializacao, int anoFimEspecializacao) {
+	public Formacao(int id, String ensinoMedio, int anoConclusaoMedio, String ensinoSuperior, int anoInicioSuperior, int anoFimSuperior, String especializacao, int anoInicioEspecializacao, int anoFimEspecializacao) {
 		this.id = id;
 		this.ensinoMedio = ensinoMedio;
 		this.anoConclusaoMedio = anoConclusaoMedio;

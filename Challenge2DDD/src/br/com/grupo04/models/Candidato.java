@@ -4,9 +4,26 @@ import br.com.gabriel.grupo04.enums.EnumTipoUsuario;
 
 public class Candidato extends Usuario {
 	
+	private int id;
 	private Curriculo curriculo;
 	public EnumTipoUsuario tipoUsuario = EnumTipoUsuario.CANDIDATO;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public EnumTipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(EnumTipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
 	public Curriculo getCurriculo() {
 		return curriculo;
 	}
@@ -17,7 +34,8 @@ public class Candidato extends Usuario {
 
 	public Candidato() {}
 	
-	public Candidato(Curriculo curriculo) {
+	public Candidato(int id, Curriculo curriculo) {
+		this.id = id;
 		this.curriculo = curriculo;
 	}
 	

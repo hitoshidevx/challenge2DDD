@@ -4,17 +4,17 @@ import java.util.Calendar;
 
 public class Experiencia {
 	
-	private String id;
+	private int id;
 	private String emprego;
 	private String empresa;
-	private Calendar dataInicio;
-	private Calendar dataFim;
+	private int anoInicio;
+	private int anoFim;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -34,30 +34,30 @@ public class Experiencia {
 		this.empresa = empresa;
 	}
 
-	public Calendar getDataInicio() {
-		return dataInicio;
+	public int getAnoInicio() {
+		return anoInicio;
 	}
 
-	public void setDataInicio(Calendar dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setAnoInicio(int anoInicio) {
+		this.anoInicio = anoInicio;
 	}
 
-	public Calendar getDataFim() {
-		return dataFim;
+	public int getAnoFim() {
+		return anoFim;
 	}
 
-	public void setDataFim(Calendar dataFim) {
-		this.dataFim = dataFim;
+	public void setAnoFim(int anoFim) {
+		this.anoFim = anoFim;
 	}
 
 	public Experiencia() {}
 	
-	public Experiencia(String id, String emprego, String empresa, Calendar dataInicio, Calendar dataFim) {
+	public Experiencia(int id, String emprego, String empresa, int anoInicio, int anoFim) {
 		this.id = id;
 		this.emprego = emprego;
 		this.empresa = empresa;
-		this.dataInicio = dataInicio;
-		this.dataFim = dataFim;
+		this.anoInicio = anoInicio;
+		this.anoFim = anoFim;
 	}
 	
 	public String ExibirEmpregoEmpresa() {
