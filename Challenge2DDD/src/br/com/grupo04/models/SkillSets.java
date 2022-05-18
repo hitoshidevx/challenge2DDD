@@ -4,10 +4,18 @@ import br.com.gabriel.grupo04.enums.EnumNivelSkill;
 
 public class SkillSets {
 	
+	private int id;
 	private String descricaoCandidato;
 	private EnumNivelSkill nivelSkill;
 	private VideoUpload upload;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getDescricaoCandidato() {
 		return descricaoCandidato;
 	}
@@ -34,7 +42,8 @@ public class SkillSets {
 
 	public SkillSets() {}
 	
-	public SkillSets(String descricaoCandidato, EnumNivelSkill nivelSkill) {
+	public SkillSets(int id, String descricaoCandidato, EnumNivelSkill nivelSkill) {
+		this.id = id;
 		this.descricaoCandidato = descricaoCandidato;
 		this.nivelSkill = nivelSkill;
 	}
@@ -61,18 +70,30 @@ public class SkillSets {
 	
 	public void AlterarNivelSkill(int escolha) {
 		//1 - BÁSICO | 2 - INTERMEDIARIO | 3 - AVANCADO
-		do {
-			if(escolha == 1) {
+		
+		if(escolha == 1) {
+			if(nivelSkill != EnumNivelSkill.BASICO) {
 				nivelSkill = EnumNivelSkill.BASICO;
-				System.out.println("Nível da Skill definido para: Básico.");
-			} else if (escolha == 2) {
-				nivelSkill = EnumNivelSkill.INTERMEDIARIO;
-				System.out.println("Nível da Skill definido para: Intermediário.");
-			} else if (escolha == 3) {
-				nivelSkill = EnumNivelSkill.AVANCADO;
-				System.out.println("Nível da Skill definido para: Avançado.");
+				System.out.println("\nNível Alterado para BÁSICO.");
+			} else {
+				System.out.println("\nA skill já tem nível BÁSICO.");
 			}
-		} while (escolha != 1 | escolha != 2 | escolha != 3);
+		} else if (escolha == 2) {
+			if(nivelSkill != EnumNivelSkill.INTERMEDIARIO) {
+				nivelSkill = EnumNivelSkill.INTERMEDIARIO;
+				System.out.println("\nNível Alterado para INTERMEDIÁRIO.");
+			} else {
+				System.out.println("\nA skill já tem nível INTERMEDIÁRIO.");
+			}
+		} else if (escolha == 3) {
+			if(nivelSkill != EnumNivelSkill.AVANCADO) {
+				nivelSkill = EnumNivelSkill.AVANCADO;
+				System.out.println("\nNível Alterado para AVANCADO.");
+			} else {
+				System.out.println("\nA skill já tem nível AVANCADO.");
+			}
+		}
+		
 	}
 	
 	

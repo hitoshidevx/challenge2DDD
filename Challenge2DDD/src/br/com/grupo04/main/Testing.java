@@ -43,6 +43,11 @@ public class Testing {
 		int escolhaPerfilCandidato;
 		int escolhaNivelSkill;
 		int escolhaProximoPasso;
+		int escolhaId;
+		int escolhaIdFormacao;
+		int escolhaIdSkill;
+		int escolhaIdExp;
+		int escolhaNovoNivelSkill;
 		
 		// Seleção de escolha - Empresa
 		int escolhaEmpresa;
@@ -50,7 +55,6 @@ public class Testing {
 		System.out.println("Qual o seu nome? (ou nome da empresa)");
 		nome = sc.next();
 		
-		do {
 			System.out.printf("\nBeleza, %s. Escolha o tipo de usuário de seu interesse:\n1 - Candidato\n2 - Empresa\n", nome);
 			escolhaTipoUsuario = sc.nextInt();
 			
@@ -63,8 +67,10 @@ public class Testing {
 				listaUsuarios.add(cd);
 				listaCandidatos.add(cd);
 				
-				int idCandidato = listaCandidatos.size() + 1;
+				int idCandidato = listaCandidatos.size();
 				cd.setId(idCandidato);
+				
+				System.out.println("\nSeu Id é: " + cd.getId() + ". Lembre-se disso.");
 				
 				cd.setNome(nome);
 				
@@ -88,26 +94,24 @@ public class Testing {
 				do {
 					System.out.printf("\nBem-vindo, %s. O que deseja fazer?\n", cd.getNome());
 					System.out.println("\nCurrículo\n"
-									+ "1. Cadastrar meu currículo.\n"
-									+ "2. Editar meu currículo.\n"
-									+ "3. Excluir meu currículo.\n"
+									+ "1. Cadastrar/Alterar meu currículo.\n"
 									+ "\nPerfil\n"
-									+ "4. Editar meu nome/email/telefone.\n"
-									+ "5. Excluir meu perfil.\n"
+									+ "2. Editar meu nome/email/telefone.\n"
+									+ "3. Excluir meu perfil.\n"
 									+ "\nSkills\n"
-									+ "6. Adicionar uma ou mais skills.\n"
-									+ "7. Editar uma skill.\n"
-									+ "8. Excluir uma skill.\n"
-									+ "9. Finalizar meu programa");
+									+ "4. Adicionar uma ou mais skills.\n"
+									+ "5. Editar uma skill.\n"
+									+ "6. Excluir uma skill.\n"
+									+ "7. Finalizar meu programa");
 					escolhaCandidato = sc.nextInt();
 					
 					switch (escolhaCandidato) {
 					case 1:
 						System.out.printf("\n\n%s, qual parte do currículo deseja cadastrar/alterar?\n", cd.getNome());
 						System.out.println("\nFormação\n"
-								+ "1. Cadastrar uma ou mais formações.\n"
-								+ "2. Alterar uma formação.\n"
-								+ "3. Excluir uma formação.\n"
+								+ "1. Cadastrar formação.\n"
+								+ "2. Alterar formação.\n"
+								+ "3. Excluir formação.\n"
 								+ "\nSkills\n"
 								+ "4. Cadastrar uma ou mais skills.\n"
 								+ "5. Alterar uma skill.\n"
@@ -123,10 +127,6 @@ public class Testing {
 							case 1:
 								
 								Formacao fm = new Formacao();
-								
-								int idFormacao = listaFormacoes.size() + 1;
-								
-								fm.setId(idFormacao);
 								
 								System.out.println("\nDigite o nome da escola onde fez E.M:");
 								String ensinoMedio = sc.next();
@@ -166,18 +166,79 @@ public class Testing {
 								
 								listaFormacoes.add(fm);
 								
-								System.out.println("\nFormações adicionadas.");
+								int idFormacao = listaFormacoes.size();
+								
+								fm.setId(idFormacao);
+								
+								cr.setFormacao(fm);
+								
+								System.out.println("\nFormação adicionada. Id: " + fm.getId());
 								
 								System.in.read();
 								
 								break;
 								
 							case 2:
-								System.out.println("\nMétodo em manutenção.");
+								System.out.println("Por favor, digite o Id da sua formação:");
+								escolhaIdFormacao = sc.nextInt();
+								
+								Formacao formacao = listaFormacoes.get(escolhaIdFormacao - 1);
+								
+								System.out.println("\nDigite o nome da escola onde fez E.M:");
+								String novoEnsinoMedio = sc.next();
+								formacao.setEnsinoMedio(novoEnsinoMedio);
+								
+								System.out.println("\nDigite o ano de início:");
+								int novoAnoInicioEM = sc.nextInt();
+								formacao.setAnoInicioMedio(novoAnoInicioEM);
+								
+								System.out.println("\nDigite o ano de conclusão:");
+								int novoAnoConclusaoEM = sc.nextInt();
+								formacao.setAnoConclusaoMedio(novoAnoConclusaoEM);
+								
+								System.out.println("\n\nDigite o nome da escola onde fez Ensino Superior:");
+								String novoEnsinoSuperior = sc.next();
+								formacao.setEnsinoSuperior(novoEnsinoSuperior);
+								
+								System.out.println("\nDigite o ano de início:");
+								int novoAnoInicioSuperior = sc.nextInt();
+								formacao.setAnoInicioSuperior(novoAnoInicioSuperior);
+								
+								System.out.println("\nDigite o ano de conclusão:");
+								int novoAnoConclusaoSuperior = sc.nextInt();
+								formacao.setAnoFimSuperior(novoAnoConclusaoSuperior);
+								
+								System.out.println("\n\nDigite o nome da escola onde fez Especialização:");
+								String novaEspecializacao = sc.next();
+								formacao.setEspecializacao(novaEspecializacao);
+								
+								System.out.println("\nDigite o ano de início:");
+								int novoAnoInicioEspec = sc.nextInt();
+								formacao.setAnoInicioEspecializacao(novoAnoInicioEspec);
+								
+								System.out.println("\nDigite o ano de conclusão:");
+								int novoAnoConclusaoEspec = sc.nextInt();
+								formacao.setAnoFimEspecializacao(novoAnoConclusaoEspec);
+								
+								System.out.println("\nSua formação foi alterada.");
+								System.out.printf("\nEnsino Médio: %s - Ano de Ínicio: %d - Ano de Conclusão: %d", formacao.getEnsinoMedio(), formacao.getAnoInicioMedio(), formacao.getAnoConclusaoMedio());
+								System.out.printf("\nEnsino Superior: %s - Ano de Ínicio: %d - Ano de Conclusão: %d", formacao.getEnsinoSuperior(), formacao.getAnoInicioSuperior(), formacao.getAnoFimSuperior());
+								System.out.printf("\nEspecialização: %s - Ano de Ínicio: %d - Ano de Conclusão: %d", formacao.getEspecializacao(), formacao.getAnoInicioEspecializacao(), formacao.getAnoFimEspecializacao());
+								
+								System.in.read();
+								
 								break;
 								
 							case 3:
-								System.out.println("\nMétodo em manutenção.");
+								System.out.println("\nDigite o Id da sua formação:");
+								escolhaIdFormacao = sc.nextInt();
+								
+								listaFormacoes.remove(escolhaIdFormacao);
+								
+								System.out.println("\nSua formação foi excluída.");
+								
+								System.in.read();
+								
 								break;
 								
 							case 4:
@@ -207,34 +268,54 @@ public class Testing {
 										} else {
 											System.out.println("\nOpção inválida. Insira novamente.");
 										}
-									} while (escolhaNivelSkill < 0 | escolhaNivelSkill > 3);
+									} while (escolhaNivelSkill <= 0 | escolhaNivelSkill > 3);
 									
-									System.out.println("\nSkill adicionada.");
+									listaSkills.add(skill);
+									
+									int idSkill = listaSkills.size();
+									
+									skill.setId(idSkill);
+									
+									System.out.println("\nSkill adicionada. Id: " + skill.getId());
+									
+									skill.ExibirSkill();
+									
+									cr.setSkills(skill);
 		
-								}
-								
-								System.out.println("\nO que deseja fazer agora?\n1 - Voltar para currículo\n2 - Voltar para Home\n3 - Sair");
-								escolhaProximoPasso = sc.nextInt();
-								
-								if(escolhaProximoPasso == 1) {
-									escolhaCandidato = 1;
-								} else if (escolhaProximoPasso == 2) {
-									System.in.read();
-								} else if (escolhaProximoPasso == 3) {
-									escolhaCandidato = 9;
 								}
 								
 								break;
 								
 							case 5:
 								
-								System.out.println("Método em manutenção.");
+								System.out.println("\nPor favor, insira o Id da Skill:");
+								escolhaIdSkill = sc.nextInt();
 								
+								SkillSets skill = listaSkills.get(escolhaIdSkill - 1);
+								
+								System.out.println("\nDigite o novo nome da skill:");
+								String novoNomeSkill = sc.next();
+								skill.setDescricaoCandidato(novoNomeSkill);
+				
+								System.out.println("\nAgora escolha um nível:\n1 - BÁSICO\n2 - INTERMEDIÁRIO\n3 - AVANÇADO");
+								escolhaNovoNivelSkill = sc.nextInt();
+								
+								skill.AlterarNivelSkill(escolhaNovoNivelSkill);
+								
+								System.in.read();
+															
 								break;
 								
 							case 6:
 								
-								System.out.println("Método em manutenção.");
+								System.out.println("\nPor favor, insira o Id da Skill:");
+								escolhaIdSkill = sc.nextInt();
+								
+								listaSkills.remove(escolhaIdSkill - 1);
+								
+								System.out.println("\nSkill excluída.");
+								
+								System.in.read();
 								
 								break;
 								
@@ -246,16 +327,14 @@ public class Testing {
 								for(int i = 0; i < qtdExperiencias; i++) {
 									Experiencia exp = new Experiencia();
 									
-									int idExperiencia = listaExperiencias.size() + 1;
 									
-									exp.setId(idExperiencia);
 									
 									System.out.println("\nDigite seu cargo " + (i + 1) + "ª empresa: ");
 									String emprego = sc.next();
 									exp.setEmprego(emprego);
 									
 									System.out.println("\nDigite o nome da " + (i + 1) + "ª empresa:");
-									String empresa = sc.nextLine();
+									String empresa = sc.next();
 									exp.setEmpresa(empresa);
 									
 									System.out.println("\nDigite o ano de início:");
@@ -268,7 +347,13 @@ public class Testing {
 									
 									listaExperiencias.add(exp);
 									
-									System.out.println("\nExperiência adicionada.");
+									int idExperiencia = listaExperiencias.size();
+									
+									exp.setId(idExperiencia);
+									
+									cr.setExperiencia(exp);
+									
+									System.out.println("\nExperiência adicionada. Id: " + exp.getId());
 								}
 
 								System.out.println("\nO que deseja fazer agora?\n1 - Voltar para currículo\n2 - Voltar para Home\n3 - Sair");
@@ -285,51 +370,169 @@ public class Testing {
 								break;
 								
 							case 8:
+								System.out.println("\nPor favor, digite o Id da sua experiência:");
+								int idExperiencia = sc.nextInt();
+								
+								Experiencia experiencia = listaExperiencias.get(idExperiencia - 1);
+								
+								System.out.println("\nDigite seu cargo na empresa: ");
+								String novoEmprego = sc.next();
+								experiencia.setEmprego(novoEmprego);
+								
+								System.out.println("\nDigite o novo nome da empresa:");
+								String novaEmpresa = sc.nextLine();
+								experiencia.setEmpresa(novaEmpresa);
+								
+								System.out.println("\nDigite o ano de início:");
+								int novoAnoInicio = sc.nextInt();
+								experiencia.setAnoInicio(novoAnoInicio);
+								
+								System.out.println("\nDigite o ano final:");
+								int novoAnoFinal = sc.nextInt();
+								experiencia.setAnoFim(novoAnoFinal);	
+								
+								System.out.println("\nSua experiência foi alterada.");
+								System.out.printf("\nEmprego: %s\nEmpresa: &s\nAno de Início: %d\nAno de Fim: %d",
+										experiencia.getEmprego(), experiencia.getEmpresa(), experiencia.getAnoInicio(), experiencia.getAnoFim());
+								
+								System.in.read();
 								
 								break;
 							
 							case 9:
+								System.out.println("\nPor favor, digite o Id da sua experiência:");
+								idExperiencia = sc.nextInt();
+								
+								listaExperiencias.remove(idExperiencia - 1);
+								
+								System.out.println("\nExperiência excluída.");
+								
+								System.in.read();
 								
 								break;
 							
 							default:
-								
+								System.out.println("\nAlternativa inválida.");
 								break;
 						}
 						
 						break;
 						
 					case 2:
+						System.out.println("\nPor favor, digite seu Id:");
+						
+						escolhaId = sc.nextInt();
+						
+						Candidato candidato = listaCandidatos.get(escolhaId - 1);
+						
+						System.out.println("\nDigite seu novo nome:");
+						nome = sc.next();
+						candidato.setNome(nome);
+						
+						System.out.println("\nDigite seu novo email:");
+						email = sc.next();
+						candidato.setEmail(email);
+						
+						System.out.println("\nDigite seu novo telefone:");
+						telefone = sc.next();
+						candidato.setTelefone(telefone);
+						
+						System.out.printf("\nSeus dados foram atualizados.\n\nNome: %s\nEmail: %s\nTelefone: %s", candidato.getNome(), candidato.getEmail(), candidato.getTelefone());
+						
+						System.in.read();
 						
 						break;
 						
 					case 3:
+						System.out.println("\nPor favor, digite seu Id:");
 						
+						escolhaId = sc.nextInt();
+						
+						listaCandidatos.remove(escolhaId - 1);
+						
+						System.out.println("\nSeu usuário foi removido.");
+						escolhaCandidato = 7;
+						 	
 						break;
-						
+					
+					// Perfil
 					case 4:
+						System.out.println("\nQuantas skills deseja cadastrar?");
+						int qtdSkills = sc.nextInt();
 						
-						break;
+						for(int i = 0; i < qtdSkills; i++) {
+							SkillSets skill = new SkillSets();
+							
+							System.out.println("\nDigite o nome da " + (i + 1) + "ª skill:");
+							String nomeSkill = sc.next();
+							skill.setDescricaoCandidato(nomeSkill);
+							
+							do {
+								System.out.println("\nQual é o nível dela?\n1 - Básico\n2 - Intermediário\n3 - Avançado");
+								escolhaNivelSkill = sc.nextInt();
+								
+								if(escolhaNivelSkill == 1) {
+									skill.setNivelSkill(EnumNivelSkill.BASICO);
+									System.out.println("\nO nível da sua skill é BÁSICO.");
+								} else if (escolhaNivelSkill == 2) {
+									skill.setNivelSkill(EnumNivelSkill.INTERMEDIARIO);
+									System.out.println("\nO nível da sua skill é INTERMEDIÁRIO.");
+								} else if (escolhaNivelSkill == 3) {
+									skill.setNivelSkill(EnumNivelSkill.AVANCADO);
+									System.out.println("\nO nível da sua skill é AVANÇADO.");
+								} else {
+									System.out.println("\nOpção inválida. Insira novamente.");
+								}
+							} while (escolhaNivelSkill <= 0 | escolhaNivelSkill > 3);
+							
+							listaSkills.add(skill);
+							
+							int idSkill = listaSkills.size();
+							
+							skill.setId(idSkill);
+							
+							System.out.println("\nSkill adicionada. Id: " + skill.getId());
+							
+							skill.ExibirSkill();
+							
+							cr.setSkills(skill);
+
+						}
 						
 					case 5:
+						System.out.println("\nPor favor, insira o Id da Skill:");
+						escolhaIdSkill = sc.nextInt();
 						
-						break;
+						SkillSets skill = listaSkills.get(escolhaIdSkill - 1);
 						
+						System.out.println("\nDigite o novo nome da skill:");
+						String novoNomeSkill = sc.next();
+						skill.setDescricaoCandidato(novoNomeSkill);
+		
+						System.out.println("\nAgora escolha um nível:\n1 - BÁSICO\n2 - INTERMEDIÁRIO\n3 - AVANÇADO");
+						escolhaNovoNivelSkill = sc.nextInt();
+						
+						skill.AlterarNivelSkill(escolhaNovoNivelSkill);
+						
+						System.in.read();
+						
+					// Skills
 					case 6:
+						System.out.println("\nPor favor, insira o Id da Skill:");
+						escolhaIdSkill = sc.nextInt();
+						
+						listaSkills.remove(escolhaIdSkill - 1);
+						
+						System.out.println("\nSkill excluída.");
+						
+						System.in.read();
 						
 						break;
 						
+					
+					// Finalizar Sistema
 					case 7:
-						
-						break;
-						
-					case 8:
-						
-						break;
-						
-					case 9:
-						System.out.println("Finalizando sistema...");
-						escolhaTipoUsuario = 3;
+						System.out.println("\nFinalizando sistema...");
 						System.in.read();
 						break;
 					
@@ -339,17 +542,14 @@ public class Testing {
 					}
 					
 					
-				} while (escolhaCandidato > 0 && escolhaCandidato < 9);
-				
-				System.out.println("\nSistema Finalizado.");
-				
-				
+				} while (escolhaCandidato > 0 && escolhaCandidato < 7);
+			
+			// Empresa
 			} else if (escolhaTipoUsuario == 2) {
 						
 			} 
-		} while (escolhaTipoUsuario == 1 | escolhaTipoUsuario == 2);
 		
-		System.out.println("Sistem finalizado.");
+		System.out.println("Sistema finalizado.");
 		
 		
 	}
